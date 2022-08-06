@@ -1,10 +1,11 @@
-from node import Node
+from .node import Node
 from typing import Any
+from .lists_abc import ListsABC
 
-class DoubleLinkedList:
+class DoubleLinkedList(ListsABC):
+
     def __init__(self) -> None:
-        self._length =0
-        self._head = None
+        super().__init__()
         self._tail = None
 
     @property

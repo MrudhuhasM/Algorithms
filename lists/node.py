@@ -1,3 +1,4 @@
+
 class Node:
     """
     Class representing a node

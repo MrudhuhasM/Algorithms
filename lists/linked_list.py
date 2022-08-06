@@ -1,14 +1,15 @@
 from typing import Any
-from node import Node
-   
-class LinkedList:
+from .node import Node
+from .lists_abc import ListsABC
+
+class LinkedList(ListsABC):
     """
     Class to represent Linked List
     """
 
     def __init__(self) -> None:
-        self._length =0
-        self._head = None
+        super().__init__()
+    
     @property
     def head(self):
         return self._head.data
@@ -24,6 +25,14 @@ class LinkedList:
     @length.setter
     def length(self):
         raise TypeError("Not Allowed")
+
+    def check_list_empty(method)-> None:
+        def wrapper_(self):
+            if self._length >= 0:
+                method(self)
+            else:
+                raise ValueError("Empty List")
+        return wrapper_
 
     def insertAtBegining(self,data)-> None:
         new_node = Node()
@@ -69,14 +78,6 @@ class LinkedList:
             previousnode.next = new_node
             new_node.next = currentnode
             self._length += 1
-
-    def check_list_empty(method)-> None:
-        def wrapper_(self):
-            if self._length >= 0:
-                method(self)
-            else:
-                raise ValueError("Empty List")
-        return wrapper_
     
     @check_list_empty
     def deleteAtBegining(self)-> None:

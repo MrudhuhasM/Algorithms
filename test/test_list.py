@@ -1,5 +1,7 @@
 import unittest
-from lists.lists import LinkedList,DoubleLinkedList
+from lists.linked_list import LinkedList
+from lists.double_linked_list import DoubleLinkedList
+from lists.circular_linked_list import CircularList
 
 
 
@@ -51,6 +53,26 @@ class TestDoubleList(unittest.TestCase):
 
     def test_deletion(self):
         new_list = initialize_linkedlist(DoubleLinkedList())
+        new_list.deleteAtBegining()
+        new_list.deleteAtEnd()
+        new_list.deleteAtNode(3)
+
+        self.assertEqual(new_list.head , 7)
+        self.assertEqual(new_list.length,6)
+
+class TestCircleList(unittest.TestCase):
+    def test_insertion(self):
+        new_list = initialize_linkedlist(CircularList())
+        new_list.insertAtBegining(9)
+        new_list.insertAtEnd(0)
+        new_list.insertAtMiddle(4,6)
+
+        self.assertEqual(new_list.head , 9)
+        self.assertEqual(new_list.length,12)
+
+
+    def test_deletion(self):
+        new_list = initialize_linkedlist(CircularList())
         new_list.deleteAtBegining()
         new_list.deleteAtEnd()
         new_list.deleteAtNode(3)
